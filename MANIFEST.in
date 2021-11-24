@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include hot_recharge_app *.css
+recursive-include hot_recharge_app *.csv
+recursive-include hot_recharge_app *.html
+recursive-include hot_recharge_app *.ico
+recursive-include hot_recharge_app *.js
+recursive-include hot_recharge_app *.json
+recursive-include hot_recharge_app *.md
+recursive-include hot_recharge_app *.png
+recursive-include hot_recharge_app *.py
+recursive-include hot_recharge_app *.svg
+recursive-include hot_recharge_app *.txt
+recursive-exclude hot_recharge_app *.pyc
