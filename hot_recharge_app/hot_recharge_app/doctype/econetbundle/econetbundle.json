@@ -1,0 +1,102 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2021-11-27 14:17:59.771410",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "name1",
+  "product_code",
+  "amount",
+  "validity_period",
+  "bundle_id",
+  "brand_id",
+  "network",
+  "description"
+ ],
+ "fields": [
+  {
+   "fieldname": "name1",
+   "fieldtype": "Data",
+   "in_preview": 1,
+   "label": "Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "product_code",
+   "fieldtype": "Data",
+   "in_preview": 1,
+   "label": "Product Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Data",
+   "in_preview": 1,
+   "label": "Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "validity_period",
+   "fieldtype": "Int",
+   "in_preview": 1,
+   "label": "Validity Period",
+   "read_only": 1
+  },
+  {
+   "fieldname": "bundle_id",
+   "fieldtype": "Data",
+   "in_preview": 1,
+   "label": "Bundle Id",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "brand_id",
+   "fieldtype": "Int",
+   "in_preview": 1,
+   "label": "Brand Id",
+   "read_only": 1
+  },
+  {
+   "fieldname": "network",
+   "fieldtype": "Data",
+   "in_preview": 1,
+   "label": "Network",
+   "read_only": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "in_preview": 1,
+   "label": "Description",
+   "read_only": 1
+  }
+ ],
+ "in_create": 1,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2021-12-07 10:26:32.320720",
+ "modified_by": "Administrator",
+ "module": "Hot Recharge App",
+ "name": "EconetBundle",
+ "nsm_parent_field": "parent_econetbundle",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

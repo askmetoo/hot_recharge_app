@@ -1,0 +1,101 @@
+{
+ "actions": [],
+ "creation": "2021-11-24 18:47:54.972229",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "access_code",
+  "access_password",
+  "reference_prefix",
+  "zesa_limit",
+  "airtime_customer_sms",
+  "zesa_customer_sms",
+  "bundle_customer_sms",
+  "conversion_rate"
+ ],
+ "fields": [
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "access_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Email",
+   "reqd": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "access_password",
+   "fieldtype": "Password",
+   "in_list_view": 1,
+   "label": "Password",
+   "reqd": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "default": "company-name-",
+   "fieldname": "reference_prefix",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Reference Prefix",
+   "reqd": 1
+  },
+  {
+   "default": "50",
+   "fieldname": "zesa_limit",
+   "fieldtype": "Float",
+   "label": "Zesa Limit",
+   "non_negative": 1
+  },
+  {
+   "default": "Airtime topup of $%AMOUNT% from %COMPANYNAME% was successful.\nFinal Airtime Balance: $%FINALBALANCE%\"",
+   "fieldname": "airtime_customer_sms",
+   "fieldtype": "Small Text",
+   "label": "Airtime Customer SMS"
+  },
+  {
+   "default": "Recharge of $%AMOUNT% from %COMPANYNAME% was successful.\nUnits: %KWH% Kwh\nMeter: %METERNUMBER%\nAcc: %ACOUNTNAME%!",
+   "fieldname": "zesa_customer_sms",
+   "fieldtype": "Small Text",
+   "label": "Zesa Customer SMS"
+  },
+  {
+   "default": "Data topup of $%AMOUNT% for %BUNDLE% from %COMPANYNAME% was successful.",
+   "fieldname": "bundle_customer_sms",
+   "fieldtype": "Small Text",
+   "label": "Bundle Customer SMS"
+  },
+  {
+   "default": "120",
+   "fieldname": "conversion_rate",
+   "fieldtype": "Float",
+   "label": "Conversion Rate",
+   "non_negative": 1,
+   "precision": "2",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2021-12-07 10:01:12.834010",
+ "modified_by": "Administrator",
+ "module": "Hot Recharge App",
+ "name": "Hot Recharge Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
