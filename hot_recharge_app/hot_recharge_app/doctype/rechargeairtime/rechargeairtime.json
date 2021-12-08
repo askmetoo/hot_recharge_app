@@ -1,7 +1,6 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "ART-{DD}-{MM}-{YY}-{###}",
  "creation": "2021-11-27 09:55:11.072245",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -108,7 +107,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-11-27 09:55:11.072245",
+ "modified": "2021-12-08 16:05:30.068196",
  "modified_by": "Administrator",
  "module": "Hot Recharge App",
  "name": "RechargeAirtime",

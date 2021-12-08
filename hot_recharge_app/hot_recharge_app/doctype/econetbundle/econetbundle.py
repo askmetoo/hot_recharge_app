@@ -2,7 +2,6 @@
 # For license information, please see license.txt
 
 import frappe
-from munch import Munch
 from frappe.model.document import Document
 
 class EconetBundle(Document):
@@ -41,7 +40,9 @@ def insert_bundle(bundles: list):
 			doc.description=bundle.Description
 			doc.insert()
 
-			frappe.rename_doc('EconetBundle', doc.name, f'{bundle.Name}-{bundle.ValidityPeriod} ({bundle.Amount})')
+			amount = int(bundle.Amount) / 100
+
+			frappe.rename_doc('EconetBundle', doc.name, f'{bundle.Name}-({bundle.ValidityPeriod} days) (RTGS ${amount})')
 			doc.reload()
 
 		except Exception as err:
@@ -80,7 +81,7 @@ def get_all_data():
 
 
 @frappe.whitelist()
-def get_all_data_filtered():
+def get_all_data_filtered(filter_by=None):
 	'''
 		get all previously added bundles data
 	'''
@@ -88,10 +89,12 @@ def get_all_data_filtered():
 
 	filtered = []
 
+	if filter_by is None:
+		filter_by = 'Econet Data'
+
 	for bundle in bundles:
-		# b = frappe.get_doc('EconetBundle', bundle.name)
-		# if b.network == 'Econet WhatsApp':
-		# 	filtered.append(bundle.name)
-		filtered.append(bundle.name)
+		b = frappe.get_doc('EconetBundle', bundle.name)
+		if b.network == filter_by:
+			filtered.append(bundle.name)
 
 	return filtered

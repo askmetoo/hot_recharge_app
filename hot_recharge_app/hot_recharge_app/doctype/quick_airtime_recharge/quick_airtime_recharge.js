@@ -5,5 +5,4 @@ frappe.ui.form.on('Quick Airtime Recharge', {
 	// refresh: function(frm) {
 
 	// }
-	
 });

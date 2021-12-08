@@ -33,11 +33,4 @@ def get_hr_settings() -> dict:
 
     _copy['access_password'] = pwd
 
-    print(_copy)
-    
-    # for k in doc.keys:
-    #     if doc.get(k) is None:
-    #         # not all settings are given, break
-    #         return None
-
     return _copy

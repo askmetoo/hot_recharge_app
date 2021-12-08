@@ -1,20 +1,27 @@
 {
- "actions": [],
+ "actions": [
+  {
+   "action": "rechange-bundle/new-rechange-bundle-1",
+   "action_type": "Route",
+   "label": "Quick Recharge"
+  }
+ ],
  "allow_rename": 1,
- "creation": "2021-11-27 10:53:49.758151",
+ "creation": "2021-11-27 13:45:57.640615",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "package",
   "bundle",
-  "number_to_recharge",
-  "recharge"
+  "number_to_recharge"
  ],
  "fields": [
   {
    "fieldname": "bundle",
    "fieldtype": "Select",
    "in_list_view": 1,
+   "in_preview": 1,
    "label": "Bundle",
    "reqd": 1
   },
@@ -27,15 +34,17 @@
   },
   {
    "bold": 1,
-   "fieldname": "recharge",
-   "fieldtype": "Button",
-   "label": "recharge"
+   "default": "Econet Data",
+   "fieldname": "package",
+   "fieldtype": "Select",
+   "label": "Package",
+   "options": "Econet Data\nEconet Text\nEconet Twitter\nEconet Instagram\nEconet Facebook\nEconet WhatsApp",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
- "issingle": 1,
  "links": [],
- "modified": "2021-11-27 10:55:22.725253",
+ "modified": "2021-12-08 14:25:09.823233",
  "modified_by": "Administrator",
  "module": "Hot Recharge App",
  "name": "Recharge Econet Bundle",

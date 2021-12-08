@@ -7,12 +7,31 @@ frappe.ui.form.on('Recharge Econet Bundle', {
 	// }
 	onload: function(frm, cdt, cdn) {
 		frm.call({
-			method: "hot_recharge_app.hot_recharge_app.doctype.recharge_econet_bundle.recharge_econet_bundle.get_econet_bundles",
+			method: "hot_recharge_app.hot_recharge_app.doctype.econetbundle.econetbundle.get_all_data_filtered",
+			args: {
+				"filter_by": frm.doc.package
+			},
 			callback: function (r) {
 				console.log(r.message);
 				var result_array = r.message;
 
-				frappe.model.set_value(cdt, cdn, 'bundle', result_array);
+				//frappe.model.set_value(cdt, cdn, 'bundle', result_array);
+				frm.set_df_property('bundle', 'options', result_array);
+			}
+		});
+	},
+	package: function(frm, cdt, cdn) {
+		frm.call({
+			method: "hot_recharge_app.hot_recharge_app.doctype.econetbundle.econetbundle.get_all_data_filtered",
+			args: {
+				"filter_by": frm.doc.package
+			},
+			callback: function (r) {
+				console.log(r.message);
+				var result_array = r.message;
+
+				//frappe.model.set_value(cdt, cdn, 'bundle', result_array);
+				frm.set_df_property('bundle', 'options', result_array);
 			}
 		});
 	},
