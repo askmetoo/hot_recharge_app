@@ -59,9 +59,10 @@
    "label": "Reference"
   }
  ],
+ "in_create": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-12-09 08:01:03.403013",
+ "modified": "2021-12-09 17:08:05.051157",
  "modified_by": "Administrator",
  "module": "Hot Recharge App",
  "name": "ZesaCustomer",

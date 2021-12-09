@@ -1,0 +1,125 @@
+{
+ "cards_label": "More",
+ "category": "Modules",
+ "charts": [],
+ "charts_label": "Recharges",
+ "creation": "2021-12-09 16:17:41.516873",
+ "developer_mode_only": 0,
+ "disable_user_customization": 0,
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "extends_another_page": 0,
+ "hide_custom": 0,
+ "idx": 0,
+ "is_default": 0,
+ "is_standard": 1,
+ "label": "Hot Recharge",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Transactions",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Airtime Recharges",
+   "link_to": "RechargeAirtime",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Econet Bundles",
+   "link_to": "EconetBundle",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Zesa",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Transactions",
+   "link_to": "ZesaRecharge",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Customers",
+   "link_to": "ZesaCustomer",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Tokens",
+   "link_to": "ZesaToken",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "HR Account",
+   "link_to": "Hot Recharge Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2021-12-09 17:10:21.943428",
+ "modified_by": "Administrator",
+ "module": "Hot Recharge App",
+ "name": "Hot Recharge",
+ "owner": "Administrator",
+ "pin_to_bottom": 0,
+ "pin_to_top": 1,
+ "shortcuts": [
+  {
+   "doc_view": "New",
+   "label": "Airtime",
+   "link_to": "Quick Airtime Recharge",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "New",
+   "label": "Econet Bundle",
+   "link_to": "Recharge Econet Bundle",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "New",
+   "label": "Zesa",
+   "link_to": "Recharge Zesa",
+   "type": "DocType"
+  }
+ ],
+ "shortcuts_label": "Recharge"
+}
