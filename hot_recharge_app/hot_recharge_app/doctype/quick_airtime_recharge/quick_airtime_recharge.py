@@ -29,13 +29,14 @@ class QuickAirtimeRecharge(Document):
 			doc.reply_sms = resp.ReplyMsg
 			doc.remaining_wallet_balance = resp.WalletBalance
 			doc.insert()
+			# doc.reload()
 
 			dt = datetime.datetime.now()
 
 			new_name = f'ART-{dt.strftime("%m-%d-%Y")}-{resp.AgentReference}'
 
 			frappe.rename_doc('RechargeAirtime', doc.name, new_name)
-			doc.reload()
+			#doc.reload()
 
 			frappe.msgprint(
 				title= 'Airtime Recharge',

@@ -23,7 +23,7 @@ class RechargeEconetBundle(Document):
 
 			amount = int(bundle.amount) / 100
 
-			resp = api.dataBundleRecharge(product_code=bundle.product_code, number=self.number_to_recharge, amount=amount, mesg=settings['bundle_customer_sms'])
+			resp = api.dataBundleRecharge(product_code=bundle.product_code, number=self.number_to_recharge, mesg=settings['bundle_customer_sms'])
 
 			doc = frappe.new_doc('EconetBundleRecharge')
 			doc.phone_number = self.number_to_recharge
@@ -38,18 +38,17 @@ class RechargeEconetBundle(Document):
 			doc.reply_sms = resp.ReplyMsg
 			doc.remaining_wallet_balance = resp.WalletBalance
 			doc.insert()
-
+	
 			dt = datetime.datetime.now()
 
 			new_name = f'EBR-{dt.strftime("%m-%d-%Y")}-{resp.AgentReference}'
 
 			frappe.rename_doc('EconetBundle', doc.name, new_name)
-			doc.reload()
-
+		
 			frappe.msgprint(
 				title= 'Bundle Recharge',
 				indicator= 'green',
-				msg=f"Econet bundle recharged to {self.number_to_recharge}!"
+				msg=f"Success: Econet bundle recharged to {self.number_to_recharge}!"
 			)
 			#super().save()
 		

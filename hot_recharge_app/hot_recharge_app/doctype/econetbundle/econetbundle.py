@@ -43,7 +43,7 @@ def insert_bundle(bundles: list):
 			amount = int(bundle.Amount) / 100
 
 			frappe.rename_doc('EconetBundle', doc.name, f'{bundle.Name}-({bundle.ValidityPeriod} days) (RTGS ${amount})')
-			doc.reload()
+			#doc.reload()
 
 		except Exception as err:
 			continue

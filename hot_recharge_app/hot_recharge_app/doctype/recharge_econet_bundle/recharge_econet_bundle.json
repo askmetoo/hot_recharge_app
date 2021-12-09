@@ -44,7 +44,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-12-08 14:25:09.823233",
+ "modified": "2021-12-09 11:02:36.847399",
  "modified_by": "Administrator",
  "module": "Hot Recharge App",
  "name": "Recharge Econet Bundle",
@@ -61,7 +61,6 @@
    "write": 1
   }
  ],
- "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "track_changes": 1
