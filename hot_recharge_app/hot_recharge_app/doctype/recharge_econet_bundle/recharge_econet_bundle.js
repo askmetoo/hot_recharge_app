@@ -5,6 +5,16 @@ frappe.ui.form.on('Recharge Econet Bundle', {
 	// refresh: function(frm) {
 
 	// }
+	onload_post_render: function(frm) {
+		frappe.show_alert('getting available data bundles list..', 5);
+		frm.call({
+			method: "hot_recharge_app.hot_recharge_app.doctype.recharge_econet_bundle.recharge_econet_bundle.get_econet_bundles",
+			callback: function (r) {
+				// no result
+			}
+		});
+	},
+
 	onload: function(frm, cdt, cdn) {
 		frm.call({
 			method: "hot_recharge_app.hot_recharge_app.doctype.econetbundle.econetbundle.get_all_data_filtered",
