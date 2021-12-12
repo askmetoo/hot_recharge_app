@@ -174,6 +174,6 @@ user_data_fields = [
 # ]
 
 # get available bundles when logged in
-on_session_creation = [
-	"hot_recharge_app.hot_recharge_app.doctype.recharge_econet_bundle.recharge_econet_bundle.get_econet_bundles"
-]
+# on_session_creation = [
+# 	"hot_recharge_app.hot_recharge_app.doctype.recharge_econet_bundle.recharge_econet_bundle.get_econet_bundles"
+# ]

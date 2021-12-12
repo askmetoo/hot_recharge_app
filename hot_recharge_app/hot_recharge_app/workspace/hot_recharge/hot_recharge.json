@@ -18,6 +18,32 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Balances",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Airtime",
+   "link_to": "Airtime Balance",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Zesa",
+   "link_to": "Zesa Balance",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Transactions",
    "link_type": "DocType",
    "onboard": 0,
@@ -94,7 +120,7 @@
    "type": "Link"
   }
  ],
- "modified": "2021-12-09 17:10:21.943428",
+ "modified": "2021-12-12 19:43:29.577437",
  "modified_by": "Administrator",
  "module": "Hot Recharge App",
  "name": "Hot Recharge",

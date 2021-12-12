@@ -1,0 +1,54 @@
+{
+ "actions": [],
+ "creation": "2021-12-12 18:47:34.974812",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "wallet_balance",
+  "last_refreshed",
+  "refresh_btn"
+ ],
+ "fields": [
+  {
+   "bold": 1,
+   "default": "0",
+   "fieldname": "wallet_balance",
+   "fieldtype": "Read Only",
+   "label": "Wallet Balance"
+  },
+  {
+   "fieldname": "last_refreshed",
+   "fieldtype": "Read Only",
+   "label": "Last Refreshed"
+  },
+  {
+   "fieldname": "refresh_btn",
+   "fieldtype": "Button",
+   "label": "refresh"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2021-12-12 19:17:18.027745",
+ "modified_by": "Administrator",
+ "module": "Hot Recharge App",
+ "name": "Airtime Balance",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
