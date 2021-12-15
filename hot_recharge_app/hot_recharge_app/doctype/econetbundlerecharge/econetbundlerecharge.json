@@ -103,7 +103,7 @@
   },
   {
    "fieldname": "reply_sms",
-   "fieldtype": "Read Only",
+   "fieldtype": "Data",
    "label": "Reply SMS"
   },
   {
@@ -114,7 +114,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-11-27 09:59:12.743711",
+ "modified": "2021-12-15 16:38:38.957821",
  "modified_by": "Administrator",
  "module": "Hot Recharge App",
  "name": "EconetBundleRecharge",

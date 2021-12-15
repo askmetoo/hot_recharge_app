@@ -4,12 +4,12 @@
 import frappe
 from frappe.model.document import Document
 
+from hot_recharge_app.hot_recharge_app.hr_api_object import get_hr_settings
+
 class EconetBundle(Document):
 	pass
 
 
-# TODO can put conversion rates here for balance 
-# or another currency
 @frappe.whitelist()
 def insert_bundle(bundles: list):
 
@@ -26,6 +26,13 @@ def insert_bundle(bundles: list):
 
 	# remove previously added data
 	delete_all_data()
+
+	# check if conversion is set
+	settings = get_hr_settings()
+
+	convert = settings.get('use_conversion', False)
+	rate = settings.get('conversion_rate', 1)
+	curr = settings.get('currency', 'ZAR')
 	
 	for bundle in bundles:
 		try:
@@ -42,8 +49,13 @@ def insert_bundle(bundles: list):
 
 			amount = int(bundle.Amount) / 100
 
-			frappe.rename_doc('EconetBundle', doc.name, f'{bundle.Name}-({bundle.ValidityPeriod} days) (RTGS ${amount})')
-			#doc.reload()
+			new_name = f'{bundle.Name}-({bundle.ValidityPeriod} days) (ZWL ${amount})'
+
+			if convert:
+				new_amount = round(rate * amount, 2)
+				new_name = f'{bundle.Name}-({bundle.ValidityPeriod} days) (ZWL ${amount}) - ({curr} ${new_amount})'
+
+			frappe.rename_doc('EconetBundle', doc.name, new_name)
 
 		except Exception as err:
 			continue

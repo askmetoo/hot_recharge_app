@@ -26,7 +26,10 @@
   {
    "fieldname": "product_code",
    "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
    "in_preview": 1,
+   "in_standard_filter": 1,
    "label": "Product Code",
    "read_only": 1
   },
@@ -40,9 +43,12 @@
   {
    "fieldname": "validity_period",
    "fieldtype": "Int",
+   "in_list_view": 1,
    "in_preview": 1,
+   "in_standard_filter": 1,
    "label": "Validity Period",
-   "read_only": 1
+   "read_only": 1,
+   "search_index": 1
   },
   {
    "fieldname": "bundle_id",
@@ -62,7 +68,10 @@
   {
    "fieldname": "network",
    "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
    "in_preview": 1,
+   "in_standard_filter": 1,
    "label": "Network",
    "read_only": 1
   },
@@ -77,7 +86,7 @@
  "in_create": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-12-07 10:26:32.320720",
+ "modified": "2021-12-15 16:48:57.425273",
  "modified_by": "Administrator",
  "module": "Hot Recharge App",
  "name": "EconetBundle",
@@ -97,6 +106,7 @@
    "write": 1
   }
  ],
+ "show_preview_popup": 1,
  "sort_field": "modified",
  "sort_order": "DESC"
 }

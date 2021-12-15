@@ -96,7 +96,7 @@
   },
   {
    "fieldname": "reply_sms",
-   "fieldtype": "Read Only",
+   "fieldtype": "Data",
    "label": "Reply SMS"
   },
   {
@@ -107,7 +107,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-12-08 16:05:30.068196",
+ "modified": "2021-12-15 16:37:43.118545",
  "modified_by": "Administrator",
  "module": "Hot Recharge App",
  "name": "RechargeAirtime",

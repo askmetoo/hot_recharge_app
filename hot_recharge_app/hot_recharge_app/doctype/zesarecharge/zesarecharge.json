@@ -129,13 +129,13 @@
   },
   {
    "fieldname": "reply_sms",
-   "fieldtype": "Read Only",
+   "fieldtype": "Data",
    "label": "Reply SMS"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-11-27 10:29:42.497835",
+ "modified": "2021-12-15 16:38:17.125367",
  "modified_by": "Administrator",
  "module": "Hot Recharge App",
  "name": "ZesaRecharge",
