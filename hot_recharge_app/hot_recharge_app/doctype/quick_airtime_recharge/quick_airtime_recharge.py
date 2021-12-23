@@ -11,44 +11,52 @@ from hotrecharge.HotRechargeException import HotRechargeException
 
 class QuickAirtimeRecharge(Document):
 	def save(self):
-		try:
-			api = get_hr_api_object()
-			settings = get_hr_settings()
+		recharge = quick_recharge(amount=self.amount, phone_number=self.phone_number)
 
-			resp = api.rechargePinless(amount=self.amount, number=self.phone_number, mesg=settings['airtime_customer_sms'])
-
-			doc = frappe.new_doc('RechargeAirtime')
-			doc.phone_number = self.phone_number
-			doc.amount = self.amount
-			doc.initial_balance = resp.InitialBalance
-			doc.final_balance = resp.FinalBalance
-			doc.recharge_id = resp.RechargeID
-			doc.reference = resp.AgentReference
-			doc.reply_code = resp.ReplyCode
-			doc.discount = resp.Discount
-			doc.reply_sms = resp.ReplyMsg
-			doc.remaining_wallet_balance = resp.WalletBalance
-			doc.insert()
-			# doc.reload()
-
-			dt = datetime.datetime.now()
-
-			new_name = f'ART-{dt.strftime("%m-%d-%Y")}-{resp.AgentReference}'
-
-			frappe.rename_doc('RechargeAirtime', doc.name, new_name)
-			#doc.reload()
-
+		if recharge:
 			frappe.msgprint(
-				title= 'Airtime Recharge',
-				indicator= 'green',
-				msg=f"Success: Airtime recharged to {self.phone_number}!"
-			)
-			#super().save()
-		
-		except HotRechargeException as hre:
-			print(hre)
-			frappe.throw(_(f"Failed to buy airtime: {hre.message}"))
+			title= 'Airtime Recharge',
+			indicator= 'green',
+			msg=f"Success: Airtime recharged to {self.phone_number}!"
+		)
 
-		except Exception as err:
-			print(err)
-			frappe.throw(_(f"Failed to buy airtime: {err}"))
+@frappe.whitelist()
+def quick_recharge(amount, phone_number):
+	'''
+		perform a quick airtime recharge
+		returns the saved doc as a dict
+	'''
+	try:
+		api = get_hr_api_object()
+		settings = get_hr_settings()
+
+		resp = api.rechargePinless(amount=amount, number=phone_number, mesg=settings['airtime_customer_sms'])
+
+		doc = frappe.new_doc('RechargeAirtime')
+		doc.phone_number = phone_number
+		doc.amount = amount
+		doc.initial_balance = resp.InitialBalance
+		doc.final_balance = resp.FinalBalance
+		doc.recharge_id = resp.RechargeID
+		doc.reference = resp.AgentReference
+		doc.reply_code = resp.ReplyCode
+		doc.discount = resp.Discount
+		doc.reply_sms = resp.ReplyMsg
+		doc.remaining_wallet_balance = resp.WalletBalance
+		doc.insert()
+		# doc.reload()
+
+		dt = datetime.datetime.now()
+
+		new_name = f'ART-{dt.strftime("%m-%d-%Y")}-{resp.AgentReference}'
+
+		frappe.rename_doc('RechargeAirtime', doc.name, new_name)
+		#doc.reload()
+
+		return frappe.get_doc('RechargeAirtime', new_name).as_dict()
+
+	except HotRechargeException as hre:
+		frappe.throw(_(f"Failed to buy airtime: {hre.message}"))
+
+	except Exception as err:
+		frappe.throw(_(f"Failed to buy airtime: {err}"))
