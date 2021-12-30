@@ -13,7 +13,7 @@ class QuickAirtimeRecharge(Document):
 	def save(self):
 		recharge = quick_recharge(amount=self.amount, phone_number=self.phone_number)
 
-		if recharge:
+		if recharge is dict:
 			frappe.msgprint(
 			title= 'Airtime Recharge',
 			indicator= 'green',
@@ -57,6 +57,8 @@ def quick_recharge(amount, phone_number):
 
 	except HotRechargeException as hre:
 		frappe.throw(_(f"Failed to buy airtime: {hre.message}"))
+		return hre.message
 
 	except Exception as err:
 		frappe.throw(_(f"Failed to buy airtime: {err}"))
+		return err

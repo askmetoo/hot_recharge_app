@@ -91,7 +91,6 @@ def get_all_data():
 
 	return filtered
 
-
 @frappe.whitelist()
 def get_all_data_filtered(filter_by=None):
 	'''

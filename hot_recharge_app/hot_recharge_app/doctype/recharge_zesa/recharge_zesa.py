@@ -20,7 +20,7 @@ class RechargeZesa(Document):
 			amount=self.amount
 		)
         
-        if top:
+        if top is dict:
             frappe.msgprint(
                 title="Zesa Recharge",
                 indicator="green",
@@ -84,10 +84,12 @@ def zesa_topup(meter_number, contact_to_notify, amount):
 
         frappe.rename_doc("ZesaRecharge", doc.name, new_name)
         
-        return frappe.get_doc('ZesaRecharge', new_name)
+        return frappe.get_doc('ZesaRecharge', new_name).as_dict()
 
     except HotRechargeException as hre:
         frappe.throw(_(f"Failed to buy zesa token: {hre.message}"))
+        return hre.message
 
     except Exception as err:
         frappe.throw(_(f"Failed to buy zesa token: {err}"))
+        return err
