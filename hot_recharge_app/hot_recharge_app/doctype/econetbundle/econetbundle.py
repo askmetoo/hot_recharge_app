@@ -109,3 +109,29 @@ def get_all_data_filtered(filter_by=None):
 			filtered.append(bundle.name)
 
 	return filtered
+
+@frappe.whitelist()
+def get_all_json_data_filtered(filter_by=None):
+	'''
+		get all previously added bundles data
+		as a list of json data
+
+		a selectable name to pass to data recharge is in > bundle_name = result.get('name')
+
+		if filter_by is None, it return Data Bundle list
+
+		to get a list of data bundles, 
+	'''
+	bundles = frappe.get_list('EconetBundle', limit_page_length=100)
+
+	filtered = []
+
+	if filter_by is None:
+		filter_by = 'Econet Data'
+
+	for bundle in bundles:
+		b = frappe.get_doc('EconetBundle', bundle.name)
+		if b.network == filter_by:
+			filtered.append(b.as_dict())
+
+	return filtered

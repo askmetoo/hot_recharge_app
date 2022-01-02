@@ -83,7 +83,8 @@
   {
    "fieldname": "discount",
    "fieldtype": "Read Only",
-   "label": "Discount"
+   "label": "Discount",
+   "print_hide": 1
   },
   {
    "fieldname": "column_break_10",
@@ -116,12 +117,14 @@
   {
    "fieldname": "reply_code",
    "fieldtype": "Read Only",
-   "label": "Reply Code"
+   "label": "Reply Code",
+   "print_hide": 1
   },
   {
    "fieldname": "wallet_balance",
    "fieldtype": "Read Only",
-   "label": "Wallet Balance"
+   "label": "Wallet Balance",
+   "print_hide": 1
   },
   {
    "fieldname": "column_break_16",
@@ -129,13 +132,14 @@
   },
   {
    "fieldname": "reply_sms",
-   "fieldtype": "Data",
-   "label": "Reply SMS"
+   "fieldtype": "Small Text",
+   "label": "Reply SMS",
+   "print_hide": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-12-15 16:38:17.125367",
+ "modified": "2022-01-02 16:05:41.963490",
  "modified_by": "Administrator",
  "module": "Hot Recharge App",
  "name": "ZesaRecharge",

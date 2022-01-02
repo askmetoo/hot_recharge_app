@@ -1,7 +1,6 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "ART-{DD}-{MM}-{YY}-{###}",
  "creation": "2021-11-27 09:23:31.373128",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -82,12 +81,14 @@
   {
    "fieldname": "reply_code",
    "fieldtype": "Read Only",
-   "label": "Reply Code"
+   "label": "Reply Code",
+   "print_hide": 1
   },
   {
    "fieldname": "discount",
    "fieldtype": "Read Only",
-   "label": "Discount"
+   "label": "Discount",
+   "print_hide": 1
   },
   {
    "collapsible": 1,
@@ -98,17 +99,19 @@
   {
    "fieldname": "reply_sms",
    "fieldtype": "Read Only",
-   "label": "Reply SMS"
+   "label": "Reply SMS",
+   "print_hide": 1
   },
   {
    "fieldname": "remaining_wallet_balance",
    "fieldtype": "Read Only",
-   "label": "Remaining Wallet Balance"
+   "label": "Remaining Wallet Balance",
+   "print_hide": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-11-27 09:23:31.373128",
+ "modified": "2022-01-02 16:03:29.484370",
  "modified_by": "Administrator",
  "module": "Hot Recharge App",
  "name": "Airtime Recharges",

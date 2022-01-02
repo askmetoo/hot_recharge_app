@@ -11,8 +11,13 @@ Hot Recharge App in Frappe ERPNEXT
 ### Setup
 After setup, configure your hot recharge settings under Settings > HR Account
 
+### Update
+run `bench --site sitename migrate`
+
 ### Demo
 ![demo.png](screenshots/home.png)
+
+
 
 #### License
 

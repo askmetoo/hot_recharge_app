@@ -71,12 +71,18 @@ def recharge_econet_bundle(selected_bundle, number_to_recharge):
 
 @frappe.whitelist()
 def get_econet_bundles():
+	'''
+		return True if all goes well
+	'''
+	
 	try:
 		api = get_hr_api_object()
 
 		bundles = api.getDataBundles()
 		
 		insert_bundle(list(bundles.Bundles))
+
+		return True
 		
 	except Exception as err:
 		frappe.throw(_(f"Failed to get bundles list: {err}"))
