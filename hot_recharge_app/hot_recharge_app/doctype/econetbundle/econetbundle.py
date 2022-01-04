@@ -9,7 +9,6 @@ from hot_recharge_app.hot_recharge_app.hr_api_object import get_hr_settings
 class EconetBundle(Document):
 	pass
 
-
 @frappe.whitelist()
 def insert_bundle(bundles: list):
 
@@ -92,13 +91,16 @@ def get_all_data():
 	return filtered
 
 @frappe.whitelist()
-def get_all_data_filtered(filter_by=None):
+def get_all_data_filtered(filter_by=None, external_api=False):
 	'''
-		get all previously added bundles data
+		get all previously added bundles data by filter passed
+		external_api: True > a list of dict
+					  False > a list of names
 	'''
 	bundles = frappe.get_list('EconetBundle', limit_page_length=100)
 
 	filtered = []
+	for_external = []
 
 	if filter_by is None:
 		filter_by = 'Econet Data'
@@ -107,31 +109,9 @@ def get_all_data_filtered(filter_by=None):
 		b = frappe.get_doc('EconetBundle', bundle.name)
 		if b.network == filter_by:
 			filtered.append(bundle.name)
+			for_external.append(b.as_dict())
 
-	return filtered
-
-@frappe.whitelist()
-def get_all_json_data_filtered(filter_by=None):
-	'''
-		get all previously added bundles data
-		as a list of json data
-
-		a selectable name to pass to data recharge is in > bundle_name = result.get('name')
-
-		if filter_by is None, it return Data Bundle list
-
-		to get a list of data bundles, 
-	'''
-	bundles = frappe.get_list('EconetBundle', limit_page_length=100)
-
-	filtered = []
-
-	if filter_by is None:
-		filter_by = 'Econet Data'
-
-	for bundle in bundles:
-		b = frappe.get_doc('EconetBundle', bundle.name)
-		if b.network == filter_by:
-			filtered.append(b.as_dict())
+	if external_api:
+		return for_external
 
 	return filtered
