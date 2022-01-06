@@ -21,7 +21,7 @@ def get_airtime_balance():
 		return bal.WalletBalance
 		
 	except HotRechargeException as hre:
-		frappe.throw(_(f"Failed to get Airtime balance: {hre.message}"))
+		frappe.throw(_(f"provider failed to process airtime balance: {hre.message}"))
 
 	except Exception as err:
 		frappe.throw(_(f"Failed to get Airtime balance: {err}"))

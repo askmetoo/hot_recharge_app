@@ -21,7 +21,7 @@ def get_zesa_balance():
 		
 	except HotRechargeException as hre:
 		print(hre)
-		frappe.throw(_(f"Failed to get Zesa balance: {hre.message}"))
+		frappe.throw(_(f"provider failed to process Zesa balance: {hre.message}"))
 
 	except Exception as err:
 		print(err)

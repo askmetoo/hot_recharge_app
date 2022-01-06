@@ -57,7 +57,7 @@ def fetch_zesa_customer(meter_number):
 		return c
 
 	except HotRechargeException as hre:
-		frappe.throw(_(f"Error: Failed to get zesa customer: {hre.message}"))
+		frappe.throw(_(f"Error: provider failed to process zesa customer: {hre.message}"))
 		
 	except Exception as err:
 		frappe.throw(_(f"Error: There was a problem getting zesa customer: {err}"))

@@ -2,7 +2,7 @@
  "cards_label": "More",
  "category": "Modules",
  "charts": [],
- "charts_label": "Recharges",
+ "charts_label": "",
  "creation": "2021-12-09 16:17:41.516873",
  "developer_mode_only": 0,
  "disable_user_customization": 0,
@@ -13,7 +13,7 @@
  "idx": 0,
  "is_default": 0,
  "is_standard": 1,
- "label": "Hot Recharge",
+ "label": "Prepaid",
  "links": [
   {
    "hidden": 0,
@@ -120,7 +120,7 @@
    "type": "Link"
   }
  ],
- "modified": "2021-12-12 19:43:29.577437",
+ "modified": "2022-01-06 12:58:15.983264",
  "modified_by": "Administrator",
  "module": "Hot Recharge App",
  "name": "Hot Recharge",

@@ -105,6 +105,9 @@ def get_all_data_filtered(filter_by=None, external_api=False):
 	if filter_by is None:
 		filter_by = 'Econet Data'
 
+	if len(bundles) == 0:
+		return None
+
 	for bundle in bundles:
 		b = frappe.get_doc('EconetBundle', bundle.name)
 		if b.network == filter_by:

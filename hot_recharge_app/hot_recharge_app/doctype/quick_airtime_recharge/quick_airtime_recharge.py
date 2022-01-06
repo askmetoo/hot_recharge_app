@@ -6,7 +6,7 @@ import datetime
 import frappe
 from frappe import _
 from frappe.model.document import Document
-from hot_recharge_app.hot_recharge_app.hr_api_object import get_hr_api_object, get_hr_settings
+from hot_recharge_app.hot_recharge_app.hr_api_object import get_hr_api_object, get_hr_settings, number_parser
 from hotrecharge.HotRechargeException import HotRechargeException
 
 class QuickAirtimeRecharge(Document):
@@ -27,6 +27,11 @@ def quick_recharge(amount, phone_number):
 		returns the saved doc as a dict
 	'''
 	try:
+		phone_number = number_parser(phone_number)
+
+		if phone_number is None:
+			raise Exception('failed to parse phonenumber')
+
 		api = get_hr_api_object()
 		settings = get_hr_settings()
 
@@ -44,19 +49,17 @@ def quick_recharge(amount, phone_number):
 		doc.reply_sms = resp.ReplyMsg
 		doc.remaining_wallet_balance = resp.WalletBalance
 		doc.insert()
-		# doc.reload()
 
 		dt = datetime.datetime.now()
 
 		new_name = f'ART-{dt.strftime("%m-%d-%Y")}-{resp.AgentReference}'
 
 		frappe.rename_doc('RechargeAirtime', doc.name, new_name)
-		#doc.reload()
 
 		return frappe.get_doc('RechargeAirtime', new_name).as_dict()
 
 	except HotRechargeException as hre:
-		frappe.throw(_(f"Failed to buy airtime: {hre.message}"))
+		frappe.throw(_(f"provider failed to process airtime purchase: {hre.message}"))
 		return hre.message
 
 	except Exception as err:

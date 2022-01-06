@@ -8,9 +8,9 @@ from frappe.model.document import Document
 from hot_recharge_app.hot_recharge_app.hr_api_object import (
     get_hr_api_object,
     get_hr_settings,
+    number_parser,
 )
 from hotrecharge.HotRechargeException import HotRechargeException
-from munch import munchify
 
 class RechargeZesa(Document):
     def save(self):
@@ -30,6 +30,11 @@ class RechargeZesa(Document):
 @frappe.whitelist()
 def zesa_topup(meter_number, contact_to_notify, amount):
     try:
+        contact_to_notify = number_parser(contact_to_notify)
+        
+        if contact_to_notify is None:
+            raise Exception('failed to parse phonenumber')
+
         api = get_hr_api_object()
         settings = get_hr_settings()
 
@@ -87,7 +92,7 @@ def zesa_topup(meter_number, contact_to_notify, amount):
         return frappe.get_doc('ZesaRecharge', new_name).as_dict()
 
     except HotRechargeException as hre:
-        frappe.throw(_(f"Failed to buy zesa token: {hre.message}"))
+        frappe.throw(_(f"provider failed to process zesa token purchase: {hre.message}"))
         return hre.message
 
     except Exception as err:

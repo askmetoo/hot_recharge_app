@@ -6,13 +6,13 @@ import frappe
 from frappe import _
 from frappe.model.document import Document
 from hot_recharge_app.hot_recharge_app.doctype.econetbundle.econetbundle import insert_bundle
-from hot_recharge_app.hot_recharge_app.hr_api_object import get_hr_api_object, get_hr_settings
+from hot_recharge_app.hot_recharge_app.hr_api_object import get_hr_api_object, get_hr_settings, number_parser
 from hotrecharge.HotRechargeException import HotRechargeException
 from munch import munchify
 
 class RechargeEconetBundle(Document):
 	def save(self):
-		bundle_rech = recharge_econet_bundle(self.bundle,self.number_to_recharge)
+		bundle_rech = recharge_econet_bundle(self.bundle, self.number_to_recharge)
 		
 		if bundle_rech is dict:
 			frappe.msgprint(
@@ -20,6 +20,7 @@ class RechargeEconetBundle(Document):
 				indicator= 'green',
 				msg=f"Success: Econet bundle recharged to {self.number_to_recharge}!"
 			)
+			
 
 @frappe.whitelist()
 def recharge_econet_bundle(selected_bundle, number_to_recharge):
@@ -27,6 +28,11 @@ def recharge_econet_bundle(selected_bundle, number_to_recharge):
 		recharge econet bundle
 	'''
 	try:
+		number_to_recharge = number_parser(number_to_recharge)
+
+		if number_to_recharge is None:
+			raise Exception('failed to parse phonenumber')
+
 		api = get_hr_api_object()
 		settings = get_hr_settings()
 
@@ -57,12 +63,12 @@ def recharge_econet_bundle(selected_bundle, number_to_recharge):
 
 		new_name = f'EBR-{dt.strftime("%m-%d-%Y")}-{resp.AgentReference}'
 
-		frappe.rename_doc('EconetBundle', doc.name, new_name)
+		frappe.rename_doc('EconetBundleRecharge', doc.name, new_name)
 		
-		return frappe.get_doc('EconetBundle', new_name).as_dict()
+		return frappe.get_doc('EconetBundleRecharge', new_name).as_dict()
 		
 	except HotRechargeException as hre:
-		frappe.throw(_(f"Failed to buy bundle: {hre.message}"))
+		frappe.throw(_(f"provider failed to process bundle purchase: {hre.message}"))
 		return hre.message
 
 	except Exception as err:

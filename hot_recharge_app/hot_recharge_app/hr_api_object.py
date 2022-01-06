@@ -3,6 +3,22 @@ import uuid
 
 import frappe
 
+import phonenumbers as pn
+
+@frappe.whitelist()
+def number_parser(number):
+	try:
+		num = pn.parse(number, 'ZW')
+
+		nf = num.national_number
+
+        # add leading zero for zim numbers
+		return f'0{nf}'
+
+	except Exception as err:
+		print(err)
+		return None
+
 @frappe.whitelist()
 def get_hr_api_object() -> hotrecharge.HotRecharge:
     settings = get_hr_settings()
