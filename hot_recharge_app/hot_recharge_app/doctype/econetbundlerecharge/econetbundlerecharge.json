@@ -73,11 +73,15 @@
   {
    "fieldname": "recharge_id",
    "fieldtype": "Read Only",
+   "in_global_search": 1,
+   "in_standard_filter": 1,
    "label": "Recharge Id"
   },
   {
    "fieldname": "reference",
    "fieldtype": "Read Only",
+   "in_global_search": 1,
+   "in_standard_filter": 1,
    "label": "Reference"
   },
   {
@@ -117,7 +121,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-02 16:02:35.516308",
+ "modified": "2022-01-07 19:18:47.308603",
  "modified_by": "Administrator",
  "module": "Hot Recharge App",
  "name": "EconetBundleRecharge",
