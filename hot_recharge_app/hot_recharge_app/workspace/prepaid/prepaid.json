@@ -61,6 +61,15 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Bundle Recharges",
+   "link_to": "EconetBundleRecharge",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Econet Bundles",
    "link_to": "EconetBundle",
    "link_type": "DocType",
@@ -120,7 +129,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-01-06 13:34:24.661881",
+ "modified": "2022-01-07 19:15:44.874007",
  "modified_by": "Administrator",
  "module": "Hot Recharge App",
  "name": "Prepaid",
