@@ -15,7 +15,7 @@ frappe.ui.form.on('Recharge Zesa', {
 
 			else {
 				frm.call({
-					method: "hot_recharge_app.hot_recharge_app.doctype.zesacustomer.zesacustomer.fetch_zesa_customer",
+					method: "hot_recharge_app.hot_recharge_app.doctype.zesacustomer.zesacustomer.fetch_zesa_customer_internal",
 					args: {
 						"meter_number": frm.doc.meter_number
 					},
@@ -41,10 +41,47 @@ frappe.ui.form.on('Recharge Zesa', {
 									frappe.msgprint(__('Double check customer meter number and check again!'));
 								}
 							);
+
 						}
 					}
 				});
 			}
+		}
+
+		else {
+			frappe.throw(__('meter number is required!'));
+		}
+	},
+
+	add_customer: function (frm) {
+		var m = frm.doc.meter_number
+
+		if (m) {
+			if (m === "") {
+				frappe.throw(__('meter number is required!'));
+			}
+
+			else {
+				frappe.show_alert('validating meter number..', 5);
+
+				frm.call({
+					method: "hot_recharge_app.hot_recharge_app.doctype.zesacustomer.zesacustomer.add_zesa_customer",
+					args: {
+						"meter_number": frm.doc.meter_number
+					},
+					callback: function (r) {
+						var result = r.message;
+
+						if (result) {
+							frappe.show_alert('New ZESA customer saved. Click check customer again to confirm!', 10);
+						}
+					}
+				});
+			}
+		}
+
+		else {
+			frappe.throw(__('meter number is required!'));
 		}
 	},
 });

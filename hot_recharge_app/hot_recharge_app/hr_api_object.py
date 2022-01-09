@@ -50,3 +50,16 @@ def get_hr_settings() -> dict:
     _copy['access_password'] = pwd
 
     return _copy
+
+@frappe.whitelist()
+def hr_app_settings() -> dict:
+    '''
+        left as is, in case some fields from settings
+        are required
+    '''
+    
+    payload = get_hr_settings()
+
+    payload['access_password'] = '**********'
+
+    return payload

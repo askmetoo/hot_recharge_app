@@ -8,6 +8,7 @@
  "field_order": [
   "meter_number",
   "check_customer",
+  "add_customer",
   "column_break_3",
   "customer",
   "address",
@@ -62,11 +63,16 @@
    "fieldname": "address",
    "fieldtype": "Read Only",
    "label": "Address"
+  },
+  {
+   "fieldname": "add_customer",
+   "fieldtype": "Button",
+   "label": "Add Customer"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-12-09 09:34:42.981085",
+ "modified": "2022-01-09 21:21:36.186711",
  "modified_by": "Administrator",
  "module": "Hot Recharge App",
  "name": "Recharge Zesa",
