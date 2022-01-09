@@ -14,18 +14,24 @@ from hotrecharge.HotRechargeException import HotRechargeException
 
 class RechargeZesa(Document):
     def save(self):
-        top = zesa_topup(
-			meter_number=self.meter_number,
-			contact_to_notify=self.contact_to_notify,
-			amount=self.amount
-		)
-        
-        if top is dict:
-            frappe.msgprint(
-                title="Zesa Recharge",
-                indicator="green",
-                msg=f"Success: ZESA token sent to {self.contact_to_notify}!",
+
+        # check if customer was confirmed
+        if self.customer:
+            top = zesa_topup(
+                meter_number=self.meter_number,
+                contact_to_notify=self.contact_to_notify,
+                amount=self.amount
             )
+            
+            if top is dict:
+                frappe.msgprint(
+                    title="Zesa Recharge",
+                    indicator="green",
+                    msg=f"Success: ZESA token sent to {self.contact_to_notify}!",
+                )
+
+        else:
+            frappe.throw(_(f"Confirm ZESA customer first to proceed"))
 
 @frappe.whitelist()
 def zesa_topup(meter_number, contact_to_notify, amount):
