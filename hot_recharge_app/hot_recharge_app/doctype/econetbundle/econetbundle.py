@@ -51,7 +51,7 @@ def insert_bundle(bundles: list):
 			new_name = f'{bundle.Name}-({bundle.ValidityPeriod} days) (ZWL ${amount})'
 
 			if convert:
-				new_amount = round(rate * amount, 2)
+				new_amount = round(amount / rate, 2)
 				new_name = f'{bundle.Name}-({bundle.ValidityPeriod} days) (ZWL ${amount}) - ({curr} ${new_amount})'
 
 			frappe.rename_doc('EconetBundle', doc.name, new_name)

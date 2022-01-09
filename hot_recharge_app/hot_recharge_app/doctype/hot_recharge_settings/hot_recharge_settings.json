@@ -17,7 +17,8 @@
   "currency_conversion_section",
   "use_conversion",
   "currency",
-  "conversion_rate"
+  "conversion_rate",
+  "zesa_rate"
  ],
  "fields": [
   {
@@ -65,13 +66,12 @@
    "label": "Bundles"
   },
   {
-   "default": "1",
+   "default": "6",
    "fieldname": "conversion_rate",
    "fieldtype": "Float",
-   "label": "Conversion Rate",
+   "label": "Airtime Rate",
    "non_negative": 1,
-   "precision": "2",
-   "reqd": 1
+   "precision": "2"
   },
   {
    "collapsible": 1,
@@ -107,12 +107,20 @@
    "fieldname": "footer",
    "fieldtype": "Small Text",
    "label": "Footer"
+  },
+  {
+   "default": "8",
+   "fieldname": "zesa_rate",
+   "fieldtype": "Float",
+   "label": "Zesa Rate",
+   "non_negative": 1,
+   "precision": "2"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2021-12-31 18:27:30.652302",
+ "modified": "2022-01-09 14:17:48.016260",
  "modified_by": "Administrator",
  "module": "Hot Recharge App",
  "name": "Hot Recharge Settings",
