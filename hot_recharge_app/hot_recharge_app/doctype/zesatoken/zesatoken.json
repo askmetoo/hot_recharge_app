@@ -26,11 +26,13 @@
   {
    "fieldname": "units",
    "fieldtype": "Read Only",
+   "in_list_view": 1,
    "label": "Units"
   },
   {
    "fieldname": "net_amount",
    "fieldtype": "Read Only",
+   "in_list_view": 1,
    "label": "Net Amount"
   },
   {
@@ -57,7 +59,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-09 14:23:03.824505",
+ "modified": "2022-01-19 01:09:42.671441",
  "modified_by": "Administrator",
  "module": "Hot Recharge App",
  "name": "ZesaToken",

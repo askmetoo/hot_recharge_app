@@ -23,6 +23,30 @@ class RechargeEconetBundle(Document):
 			
 
 @frappe.whitelist()
+def is_zim_number(number: str, is_external_api=False):
+	if number_parser(number):
+		if len(number) == 10:
+			if number.startswith('07'):
+				return True
+
+	if is_external_api:
+		frappe.throw(_(f"Failed to proceed: Number, {number} is not a valid Zimbabwean number"))
+
+	return None
+	
+
+@frappe.whitelist()
+def is_econet_number(number: str, is_external_api=False):
+	if is_zim_number(number):
+		if number.startswith('078') or number.startswith('077'):
+			return True
+
+	if is_external_api:
+		frappe.throw(_(f"Failed to proceed: Number, {number} is not a valid Econet number!"))
+
+	return None
+
+@frappe.whitelist()
 def recharge_econet_bundle(selected_bundle, number_to_recharge):
 	'''
 		recharge econet bundle
@@ -32,6 +56,10 @@ def recharge_econet_bundle(selected_bundle, number_to_recharge):
 
 		if number_to_recharge is None:
 			raise Exception('failed to parse phonenumber')
+
+		# check num format
+		if is_econet_number(number_to_recharge) is None:
+			raise Exception('number not a valid Zim Econet number')
 
 		api = get_hr_api_object()
 		settings = get_hr_settings()
