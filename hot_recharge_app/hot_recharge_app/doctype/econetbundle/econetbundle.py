@@ -31,9 +31,13 @@ def insert_bundle(bundles: list):
 
 	convert = settings.get('use_conversion', False)
 	rate = settings.get('conversion_rate', 1)
-	curr = settings.get('currency', 'ZAR')
+	data_rate = settings.get('data_rate', 1)
 	
 	for bundle in bundles:
+		# exclude all daily bundles 
+		if int(bundle.ValidityPeriod) < 3:
+			continue
+
 		try:
 			doc = frappe.new_doc('EconetBundle')
 			doc.name1 = bundle.Name
@@ -48,11 +52,18 @@ def insert_bundle(bundles: list):
 
 			amount = int(bundle.Amount) / 100
 
-			new_name = f'{bundle.Name}-({bundle.ValidityPeriod} days) (ZWL ${amount})'
+			new_name = f'{bundle.Name}-({bundle.ValidityPeriod} days) (${amount})'
 
 			if convert:
-				new_amount = round(amount / rate, 2)
-				new_name = f'{bundle.Name}-({bundle.ValidityPeriod} days) (ZWL ${amount}) - ({curr} ${new_amount})'
+				# check if its private wifi bundle PWBxx
+				# if so, apply data_rate
+				if str(bundle.ProductCode).startswith('PWB'):
+					new_amount = round(amount / data_rate, 0)
+					new_name = f'{bundle.Name}-({bundle.ValidityPeriod} days) (${amount})-(R{new_amount})'
+
+				else:
+					new_amount = round(amount / rate, 0)
+					new_name = f'{bundle.Name}-({bundle.ValidityPeriod} days) (${amount})-(R{new_amount})'
 
 			frappe.rename_doc('EconetBundle', doc.name, new_name)
 

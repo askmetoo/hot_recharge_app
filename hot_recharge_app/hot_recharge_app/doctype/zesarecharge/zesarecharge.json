@@ -78,7 +78,7 @@
    "fieldname": "amount",
    "fieldtype": "Read Only",
    "in_preview": 1,
-   "label": "Amount"
+   "label": "Amount(ZWL)"
   },
   {
    "fieldname": "discount",
@@ -139,7 +139,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-02 16:05:41.963490",
+ "modified": "2022-01-19 01:09:02.800252",
  "modified_by": "Administrator",
  "module": "Hot Recharge App",
  "name": "ZesaRecharge",

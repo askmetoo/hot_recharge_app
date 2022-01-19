@@ -18,7 +18,8 @@
   "use_conversion",
   "currency",
   "conversion_rate",
-  "zesa_rate"
+  "zesa_rate",
+  "data_rate"
  ],
  "fields": [
   {
@@ -67,8 +68,9 @@
   },
   {
    "default": "6",
+   "description": "same as other bundles rate",
    "fieldname": "conversion_rate",
-   "fieldtype": "Float",
+   "fieldtype": "Int",
    "label": "Airtime Rate",
    "non_negative": 1,
    "precision": "2"
@@ -111,16 +113,23 @@
   {
    "default": "8",
    "fieldname": "zesa_rate",
-   "fieldtype": "Float",
+   "fieldtype": "Int",
    "label": "Zesa Rate",
    "non_negative": 1,
    "precision": "2"
+  },
+  {
+   "default": "10",
+   "fieldname": "data_rate",
+   "fieldtype": "Int",
+   "label": "Private WiFi Rate",
+   "non_negative": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2022-01-09 14:17:48.016260",
+ "modified": "2022-01-13 00:31:34.554852",
  "modified_by": "Administrator",
  "module": "Hot Recharge App",
  "name": "Hot Recharge Settings",
