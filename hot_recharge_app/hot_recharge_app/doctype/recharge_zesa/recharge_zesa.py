@@ -66,6 +66,9 @@ def zesa_topup(meter_number, contact_to_notify, amount):
             doc.units = token_.Units
             doc.net_amount = token_.NetAmount
             doc.reference = token_.ZesaReference
+            doc.levy = token_.Levy
+            doc.arrears = token_.Arrears
+            doc.tax_amount = token_.TaxAmount
             doc.insert()
 
             new_name = f"TOKEN-{meter_number}-{token_.ZesaReference}"

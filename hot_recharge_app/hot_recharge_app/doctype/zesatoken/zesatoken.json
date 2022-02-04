@@ -10,7 +10,10 @@
   "token",
   "units",
   "net_amount",
-  "reference"
+  "reference",
+  "levy",
+  "arrears",
+  "tax_amount"
  ],
  "fields": [
   {
@@ -55,11 +58,28 @@
    "in_standard_filter": 1,
    "label": "Zesa Customer",
    "options": "ZesaCustomer"
+  },
+  {
+   "fieldname": "levy",
+   "fieldtype": "Read Only",
+   "label": "Levy"
+  },
+  {
+   "fieldname": "arrears",
+   "fieldtype": "Read Only",
+   "label": "Arrears",
+   "print_hide": 1
+  },
+  {
+   "fieldname": "tax_amount",
+   "fieldtype": "Read Only",
+   "label": "Tax Amount",
+   "print_hide": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-19 01:09:42.671441",
+ "modified": "2022-02-04 12:54:36.581258",
  "modified_by": "Administrator",
  "module": "Hot Recharge App",
  "name": "ZesaToken",
